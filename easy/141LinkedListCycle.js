@@ -1,11 +1,12 @@
 const hasCycle = (head) => {
-  let visited = [];
-  let current = head;
+  let slow = head;
+  let fast = head;
 
-  while (current) {
-    if (visited.includes(current)) return true;
-    visited.push(current);
-    current = current.next;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) return true;
   }
 
   return false;
