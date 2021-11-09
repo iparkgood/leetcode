@@ -1,12 +1,12 @@
 const rangeSumBST = (root, low, high) => {
     let sum = low + high;
 
-    const sumUp = (node) => {
+    const traverse = (node) => {
         if (node.val > low && node.val < high) sum += node.val;
-        if (node.left) sumUp(node.left);
-        if (node.right) sumUp(node.right);
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
     }
-    sumUp(root);
+    traverse(root);
 
     return sum;
 };
