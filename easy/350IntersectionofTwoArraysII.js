@@ -1,19 +1,17 @@
 const intersect = (nums1, nums2) => {
-  let intersection = [];
   let hashMap = {};
 
   for (const num of nums1) {
     hashMap[num] = (hashMap[num] || 0) + 1;
   }
 
-  for (const num of nums2) {
+  return nums2.reduce((acc, num) => {
     if (hashMap[num]) {
       hashMap[num]--;
-      intersection.push(num);
+      acc.push(num);
     }
-  }
-
-  return intersection;
+    return acc;
+  }, []);
 };
 
 console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]));
