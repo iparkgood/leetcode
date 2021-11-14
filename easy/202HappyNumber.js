@@ -1,22 +1,13 @@
 const isHappy = (n) => {
-    const getNext = (n) => {
-
-        let total = 0;
-
-        while (n > 0) {
-            const d = n % 10;
-            n = Math.floor(n / 10);
-            total += d * d;
-        }
-
-        return total;
-    }
-
     let hashMap = {};
 
     while (n !== 1 && !hashMap[n]) {
         hashMap[n] = 1;
-        n = getNext(n);
+
+        n = n.toString().split("").reduce((total, num) => {
+            return total += Math.pow(+num, 2);
+        }, 0)
+
     }
 
     return n === 1;
