@@ -1,9 +1,8 @@
 const containsDuplicate = (nums) => {
-  let hashMap = {};
+  nums.sort((a, b) => a - b);
 
-  for (const val of nums) {
-    if (hashMap[val]) return true;
-    hashMap[val] = 1;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === nums[i + 1]) return true;
   }
 
   return false;
