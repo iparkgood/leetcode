@@ -1,0 +1,3 @@
+const gardenNoAdj = (n, paths) => {
+    
+};
