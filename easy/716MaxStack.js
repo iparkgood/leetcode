@@ -29,13 +29,7 @@ MaxStack.prototype.top = function () {
  * @return {number}
  */
 MaxStack.prototype.peekMax = function () {
-  let max = this.stack[0];
-
-  for (const val of this.stack) {
-    max = max < val ? val : max;
-  }
-
-  return max;
+  return Math.max(...this.stack)
 };
 
 /**
