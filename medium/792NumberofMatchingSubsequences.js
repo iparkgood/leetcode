@@ -4,12 +4,13 @@
  * @return {number}
  */
 const numMatchingSubseq = (s, words) => {
-  let sPointer = 0;
-  let wPointer = 0;
   let count = 0;
 
   for (const w of words) {
+    let sPointer = 0;
+    let wPointer = 0;
     let same = 0;
+
     while (sPointer < s.length && wPointer < w.length) {
       if (s[sPointer] !== w[wPointer]) {
         sPointer++;
@@ -22,8 +23,6 @@ const numMatchingSubseq = (s, words) => {
     if (same === w.length) {
       count++;
     }
-    sPointer = 0;
-    wPointer = 0;
   }
 
   return count;
