@@ -5,17 +5,23 @@
  * @return {number[]}
  */
 const arraysIntersection = (arr1, arr2, arr3) => {
-    const arr = [...arr1, ...arr2, ...arr3];
-    const hashMap = {};
-    let res = [];
+    let ans = [];
+    let p1 = 0, p2 = 0, p3 = 0;
 
-    for (const num of arr) {
-        hashMap[num] = (hashMap[num] || 0) + 1;
+    while (p1 < arr1.length && p2 < arr2.length && p3 < arr3.length) {
+        if (arr1[p1] === arr2[p2] && arr2[p2] === arr3[p3]) {
+            ans.push(arr1[p1]);
+            p1++;
+            p2++;
+            p3++;
+        } else {
+            if (arr1[p1] < arr2[p2]) {
+                p1++;
+            } else if (arr2[p2] < arr3[p3]) {
+                p2++;
+            } else {
+                p3++;
+            }
+        }
     }
-
-    for (const key in hashMap) {
-        if (hashMap[key] === 3) res.push(+key);
-    }
-
-    return res;
 };
