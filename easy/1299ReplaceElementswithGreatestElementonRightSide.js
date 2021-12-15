@@ -3,20 +3,13 @@
  * @return {number[]}
  */
 const replaceElements = (arr) => {
-    const getMax = (subArr) => {
-        if (!subArr.length) return -1;
+    let currentMax = arr[arr.length - 1];
+    arr[arr.length - 1] = -1;
 
-        let max = subArr[0];
-
-        for (let i = 0; i < subArr.length; i++) {
-            max = max < subArr[i] ? subArr[i] : max;
-        }
-
-        return max;
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-        arr[i] = getMax(arr.slice(i + 1));
+    for (let i = arr.length - 2; i >= 0; i--) {
+        const current = arr[i];
+        arr[i] = currentMax;
+        currentMax = currentMax < current ? current : currentMax;
     }
 
     return arr;
