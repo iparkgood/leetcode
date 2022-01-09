@@ -10,11 +10,11 @@ const strStr = (haystack, needle) => {
 
   for (let i = 0; i < haystack.length; i++) {
     if (haystack[i] === needle[j]) {
-      if (j === needle.length - 1) return i - j;
-      j++;
-    } else {
-      i = i - j;
-      j = 0;
+      if (needle === haystack.slice(i, i + needle.length)) {
+        return i;
+      } else {
+        j = 0;
+      }
     }
   }
 
